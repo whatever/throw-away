@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "ayyy": "webpack --mode production",
+    "livest": "webpack --watch --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
