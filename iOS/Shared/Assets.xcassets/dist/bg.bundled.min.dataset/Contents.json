@@ -1,7 +1,7 @@
 {
   "data" : [
     {
-      "filename" : "bundle.js",
+      "filename" : "bg.bundled.min.js",
       "idiom" : "universal"
     }
   ],
