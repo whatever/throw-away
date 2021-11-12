@@ -114,6 +114,4 @@ window.addEventListener("resize", debounce(33, () => {
   app.fill();
 }));
 
-
-
 export * as CTRL from "./controller.js";
