@@ -6,7 +6,8 @@
   "scripts": {
     "ayyy": "webpack --mode production",
     "livest": "webpack --watch --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lmao": "webpack serve --config webpack.config.js --static dist --open --mode development --host 0.0.0.0 --hot",
+    "test": "echo \"not really fucking with tests bruv\""
   },
   "author": "",
   "license": "UNLICENSED",
