@@ -28,16 +28,11 @@ class App {
     });
 
     this.renderer.setClearColor("#00FFFF");
-    this.renderer.setSize(el.clientWidth, el.clientHeight);
 
     this.el = el;
     this.scene = new Scene();
-    this.camera = new PerspectiveCamera(
-      45,
-      el.width/el.height,
-      4.0,
-      3000,
-    );
+
+    this.fill();
 
     this.mesh = new Mesh(
       new BoxGeometry(2, 2, 2),
@@ -47,6 +42,22 @@ class App {
     this.mesh.position.set(0, 0, 0);
 
     this.scene.add(this.mesh);
+  }
+
+  fill() {
+
+    let w = document.documentElement.clientWidth;
+    let h = document.documentElement.clientHeight;
+
+    this.renderer.setSize(w, h);
+
+    this.camera = new PerspectiveCamera(
+      45,
+      w/h,
+      4.0,
+      3000,
+    );
+
   }
 
   update() {
@@ -77,3 +88,32 @@ function loop() {
 }
 
 loop();
+
+function debounce(delay, fn) {
+  let id = "whatever";
+  let last = 0;
+  let self = this;
+  return function() {
+    let now = +new Date();
+    if (now - last < delay) {
+      return;
+    }
+    clearTimeout(id);
+    id = setTimeout(() => {
+      fn.apply(self, []);
+    }, delay);
+  }
+}
+
+
+window.addEventListener("orientationchange", () => {
+  app.fill();
+});
+
+window.addEventListener("resize", debounce(33, () => {
+  app.fill();
+}));
+
+
+
+export * as CTRL from "./controller.js";
