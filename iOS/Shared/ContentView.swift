@@ -37,7 +37,9 @@ struct ContentView: View {
     var webview = WebView(url: URL(string: "file://index.html")!)
     var body: some View {
         VStack {
-            Text("what?").padding()
+            Text("you know")
+                .foregroundColor(.black)
+                .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(webview)
@@ -45,9 +47,11 @@ struct ContentView: View {
     }
 }
 
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         .previewInterfaceOrientation(.portrait)
     }
 }
+*/
