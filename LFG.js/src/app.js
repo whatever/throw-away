@@ -19,61 +19,104 @@ import {
   WebGLRenderer,
 } from "three";
 
+const elapsed = (function () {
+  let last = undefined;
+  return function () {
+
+    let now = +new Date();
+
+    if (last === undefined) {
+      last = now;
+      return 0
+    }
+
+    let res = now-last;
+    last = now;
+
+    return res;
+  };
+}());
+
+
 function random(low, high) {
   return low + Math.random() * (high-low);
 }
 
 
+class Backdrop extends Object3D {
+  WIDTH = 2;
+  HEIGHT = 2;
 
-function backdropMesh(depth) {
-  let mat = new MeshBasicMaterial({
-    vertexColors: VertexColors,
-    side: DoubleSide,
-  });
+  constructor(depth) {
 
-  let w = 2;
-  let h = 1;
+    super();
 
-  let vertices = []
-  let normals = [];
-  let colors = [];
+    let mat = new MeshBasicMaterial({
+      vertexColors: VertexColors,
+      side: DoubleSide,
+    });
 
+    let w = 2;
+    let h = 1;
 
-  let indices = new Uint16Array([
-    0, 1, 2,
-    1, 2, 3,
-  ]);
-
-
-  for (let i=0; i < 2; i++) {
-    for (let j=0; j < 2; j++) {
-      let x = -1 + w*i;
-      let y = -1 + w*j;
-      let z = depth;
+    let vertices = []
+    let normals = [];
+    let colors = [];
 
 
-      let r = random(0.5, 1);
-      let g = random(0.25, 1);
-      let b = random(0.75, 1);
+    let indices = new Uint16Array([
+      0, 1, 2,
+      1, 2, 3,
+    ]);
 
-      vertices.push(x, y, z);
-      normals.push(0, 1, 1);
-      colors.push(r, g, b);
+    for (let i=0; i < 2; i++) {
+      for (let j=0; j < 2; j++) {
+        let x = -1 + w*i;
+        let y = -1 + w*j;
+        let z = depth;
 
+        let r = random(0.0, 0.1);
+        let g = random(0.0, 0.1);
+        let b = random(0.0, 0.1);
+
+        vertices.push(x, y, z);
+        normals.push(0, 1, 1);
+        colors.push(r, g, b);
+
+      }
     }
+
+    this.geo = new BufferGeometry();
+    this.geo.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+    this.geo.setAttribute("color", new Float32BufferAttribute(colors, 3));
+    this.geo.setAttribute("normal", new Float32BufferAttribute(normals, 3));
+    this.geo.setIndex(new BufferAttribute(indices, 1))
+
+    this.add(new Mesh(this.geo, mat));
   }
 
-  let geo = new BufferGeometry();
-  geo.setAttribute("position", new Float32BufferAttribute(vertices, 3));
-  geo.setAttribute("color", new Float32BufferAttribute(colors, 3));
-  geo.setAttribute("normal", new Float32BufferAttribute(normals, 3));
-  geo.setIndex(new BufferAttribute(indices, 1))
+  tick() {
+    const colors = this.geo.attributes.color.array;
+    const w = 2;
+    const s = elapsed()/1000.0*5.0;
+
+    for (let i=0; i < 2; i++) {
+      for (let j=0; j < 2; j++) {
+        let y = -1 + w*j;
+        let u = (y+0);
+
+        let k = 3*(2*i + j);
+
+        colors[k+0] += random(0, u*s);
+        colors[k+1] += random(0, u*s);
+        colors[k+2] += random(0, u*s);
 
 
-  let obj = new Object3D();
-  obj.add(new Mesh(geo, mat));
+      }
+    }
 
-  return obj;
+    this.geo.attributes.color.needsUpdate = true;
+  }
 }
 
 
@@ -105,7 +148,7 @@ export class App {
     this.mesh.position.set(0, 0, 0);
     // this.scene.add(this.mesh);
 
-    this.bg = backdropMesh(-0);
+    this.bg = new Backdrop(-1);
     this.scene.add(this.bg);
   }
 
@@ -132,6 +175,8 @@ export class App {
 
     this.camera.position.set(0, 0, 5);
     this.camera.lookAt(new Vector3(0, 0, 0));
+
+    this.bg.tick();
   }
 
   draw() {
