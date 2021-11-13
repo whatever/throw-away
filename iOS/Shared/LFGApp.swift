@@ -14,6 +14,16 @@ func lezgo() {
     }
 }
 
+func blurb() -> String {
+    let poems: [String] = [
+        "wolves never die",
+        "many things never happen",
+        "wolves happen to fall in love",
+        "not everything is a big deal..."
+    ]
+    return poems.randomElement()!
+}
+
 @main
 struct LFGApp: App {
     var body: some Scene {

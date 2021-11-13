@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C93D5B4E273DE4B7003D7D20 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = C93D5B4D273DE4B7003D7D20 /* dist */; };
+		C9B2925D2740536B00B8EC97 /* poems.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9B2925C2740536B00B8EC97 /* poems.txt */; };
+		C9B2925E2740536B00B8EC97 /* poems.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9B2925C2740536B00B8EC97 /* poems.txt */; };
 		C9C0A8FD273DD54B00046EC8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0A8FC273DD54B00046EC8 /* Tests_iOS.swift */; };
 		C9C0A8FF273DD54B00046EC8 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0A8FE273DD54B00046EC8 /* Tests_iOSLaunchTests.swift */; };
 		C9C0A909273DD54B00046EC8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0A908273DD54B00046EC8 /* Tests_macOS.swift */; };
@@ -39,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		C93D5B4D273DE4B7003D7D20 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dist; path = ../LFG.js/dist; sourceTree = "<group>"; };
+		C9B2925C2740536B00B8EC97 /* poems.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = poems.txt; sourceTree = "<group>"; };
 		C9C0A8E4273DD54A00046EC8 /* LFGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGApp.swift; sourceTree = "<group>"; };
 		C9C0A8E5273DD54A00046EC8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9C0A8E6273DD54B00046EC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 				C9C0A8E4273DD54A00046EC8 /* LFGApp.swift */,
 				C9C0A8E5273DD54A00046EC8 /* ContentView.swift */,
 				C9C0A8E6273DD54B00046EC8 /* Assets.xcassets */,
+				C9B2925C2740536B00B8EC97 /* poems.txt */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -271,6 +275,7 @@
 			files = (
 				C93D5B4E273DE4B7003D7D20 /* dist in Resources */,
 				C9C0A910273DD54B00046EC8 /* Assets.xcassets in Resources */,
+				C9B2925D2740536B00B8EC97 /* poems.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C0A911273DD54B00046EC8 /* Assets.xcassets in Resources */,
+				C9B2925E2740536B00B8EC97 /* poems.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

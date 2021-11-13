@@ -37,7 +37,7 @@ struct ContentView: View {
     var webview = WebView(url: URL(string: "file://index.html")!)
     var body: some View {
         VStack {
-            Text("you know")
+            Text(blurb())
                 .foregroundColor(.black)
                 .padding()
         }
